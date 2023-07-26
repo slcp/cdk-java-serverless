@@ -8,13 +8,16 @@ The purpose of this repository is learn and surface that learning when getting s
   - Java 17 - I used `brew` to [install](https://formulae.brew.sh/formula/openjdk@17) and use [`jenv`](https://www.jenv.be/) to manage multiple versions
   - An IDE that support Java development, I am using VSCode but the one you are most comfortable with is probably best
   - (optional) Docker & Docker Compose for deployments to Localstack or your own Localstack instance running
-  - (optional) `cdklocal` - [Install](https://github.com/localstack/aws-cdk-local) for deploying to Localstack 
+  - (optional) `cdklocal` - [Install](https://github.com/localstack/aws-cdk-local) for deploying to Localstack
+  - (optional) `aws-vault` - [Install](https://github.com/99designs/aws-vault). The commands in the `Makefile` used `aws-vault` with a profile of `sandbox` to execute commands against an AWS account. If you are not using `aws-vault` find and remove all instances of `aws-vault exec sandbox --no-session -- ` in the `Makefile` and all other instructions here should work as expected.
 
 ## Goals
 
   - Define a Java Lambda handler
   - Define a Java Lambda in CDK
   - Connect an API Gateway to the Java Lambda
+  - Deploy and interact with other services from the Lambda, e.g. DynamoDB
+  - Explore approached to shared libs with Lambda = Layers?
 
 ## Deployment
 

@@ -4,4 +4,3 @@
 - Updates CDK to 2.88.0 to find JAVA_17 related values
 - The maven-shade-plugin is required when packaging lambdas so that all dependencies are included in the JAR
 - Reload the Java Language Server in VSCode if new projects are added, nothing will be recognised until you do
-- To deploy: spin up localstack or have some aws credentials available -> make deploy

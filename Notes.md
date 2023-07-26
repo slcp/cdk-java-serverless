@@ -4,3 +4,4 @@
 - Updates CDK to 2.88.0 to find JAVA_17 related values
 - The maven-shade-plugin is required when packaging lambdas so that all dependencies are included in the JAR
 - Reload the Java Language Server in VSCode if new projects are added, nothing will be recognised until you do
+- If specifying source.compiler option in the `pom.xml` 1.8 is the minimum version for the current project configurations (eg. Java 17). Unsure what other factors influence this rule.

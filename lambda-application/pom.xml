@@ -54,5 +54,6 @@
   </build>
   <modules>
     <module>lambda-1</module>
+    <module>lambda-layer</module>
   </modules>
 </project>

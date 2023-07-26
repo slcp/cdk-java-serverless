@@ -10,7 +10,7 @@
   </parent>
 
   <groupId>com.tericcabrel</groupId>
-  <artifactId>lambda-1</artifactId>
+  <artifactId>lambda-layer</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -30,12 +30,36 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.tericcabrel</groupId>
-      <artifactId>lambda-layer</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <!-- Tells the compiler it will be available in the runtime already - it should be in the layer -->
-      <scope>provided</scope> 
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>dynamodb</artifactId>
+      <version>2.14.10</version>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>dynamodb-enhanced</artifactId>
+      <version>2.14.10</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <outputFile>${project.build.directory}/out/java/lib/lambda-layer-1.0-SNAPSHOT.jar</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

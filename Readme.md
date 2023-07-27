@@ -2,6 +2,14 @@
 
 The purpose of this repository is learn and surface that learning when getting started with Java in AWS using CDK and serverless infrastructure like Lambda & DynamoDB.
 
+## Potentially useful resources
+
+  - [https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-java.html](https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-java.html)
+  - [https://blog.tericcabrel.com/aws-lambda-java-cdk/](https://blog.tericcabrel.com/aws-lambda-java-cdk/)
+  - [https://maven.apache.org/plugins/maven-shade-plugin/](https://maven.apache.org/plugins/maven-shade-plugin/)
+  - [https://www.baeldung.com/maven-multi-module](https://www.baeldung.com/maven-multi-module)
+
+
 ## Requirements
 
   - Latest CDK - [Install](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html#getting_started_install)

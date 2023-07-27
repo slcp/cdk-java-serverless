@@ -1,4 +1,4 @@
-build-application:
+build:
 	cd lambda-application && mvn clean install
 
 deploy: build-application

@@ -13,12 +13,14 @@ import software.amazon.awscdk.services.dynamodb.Attribute;
 import software.amazon.awscdk.services.dynamodb.AttributeType;
 import software.amazon.awscdk.services.dynamodb.BillingMode;
 import software.amazon.awscdk.services.dynamodb.Table;
+import software.amazon.awscdk.services.lambda.Architecture;
 import software.amazon.awscdk.services.lambda.Code;
 import software.amazon.awscdk.services.lambda.Function;
 import software.amazon.awscdk.services.lambda.FunctionProps;
 import software.amazon.awscdk.services.lambda.LayerVersion;
 import software.amazon.awscdk.services.lambda.LayerVersionProps;
 import software.amazon.awscdk.services.lambda.Runtime;
+import software.amazon.awscdk.services.lambda.Tracing;
 import software.amazon.awscdk.services.logs.RetentionDays;
 import software.constructs.Construct;
 
@@ -50,6 +52,8 @@ public class JavaCdkStack extends Stack {
                                 .timeout(Duration.seconds(30))
                                 .layers(Arrays.asList(layer))
                                 .logRetention(RetentionDays.ONE_WEEK)
+                                .architecture(Architecture.ARM_64)
+                                .tracing(Tracing.ACTIVE)
                                 .build());
 
                 LambdaRestApi.Builder.create(this, "myapi")

@@ -48,7 +48,7 @@ public class JavaCdkStack extends Stack {
                                 .runtime(Runtime.JAVA_17)
                                 .code(Code.fromAsset(functionOnePath.toAbsolutePath().toString()))
                                 .handler("com.tericcabrel.App")
-                                .memorySize(256)
+                                .memorySize(512)
                                 .timeout(Duration.seconds(30))
                                 .layers(Arrays.asList(layer))
                                 .logRetention(RetentionDays.ONE_WEEK)

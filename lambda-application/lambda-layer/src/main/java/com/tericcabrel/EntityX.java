@@ -2,29 +2,18 @@ package com.tericcabrel;
 
 import lombok.Builder;
 import lombok.Getter;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
-import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbImmutable;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 // Immutable entity class
 @Builder
 @Getter
-@DynamoDbImmutable(builder = EntityXAsDynamoBeanORM.EntityXAsDynamoBeanORMBuilder.class)
-public class EntityXAsDynamoBeanORM {
+@DynamoDbImmutable(builder = EntityX.EntityXBuilder.class)
+public class EntityX {
     // onMethod_ options will applied as annotations to the created method
     @Getter(onMethod_ = @DynamoDbPartitionKey)
     private String id;
     private String name;
-
-    private static final DynamoDbEnhancedClient DDB_ENHANCED_CLIENT = DynamoDbEnhancedClient.create();
-    private static final String TABLE_NAME = System.getenv("TABLE_NAME");
-    // This can be used to interact with the store for this entity - it does not
-    // have to live within this class but for now why not
-    // Generating a table schema is a relatively expensive operation
-    public static final DynamoDbTable<EntityXAsDynamoBeanORM> CUSTOMER_TABLE = DDB_ENHANCED_CLIENT.table(TABLE_NAME,
-            TableSchema.fromImmutableClass(EntityXAsDynamoBeanORM.class));
 
     // If using an immutable data class with a Builder all methods must be getters
     // otherwise an exception will be thrown

@@ -10,7 +10,7 @@
   </parent>
 
   <groupId>com.tericcabrel</groupId>
-  <artifactId>lambda-layer</artifactId>
+  <artifactId>lambda-foundation-layer</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>lambda-1</name>
@@ -34,6 +34,23 @@
       <artifactId>dynamodb-enhanced</artifactId>
       <version>2.14.10</version>
     </dependency>
+    <dependency>
+      <groupId>com.tericcabrel</groupId>
+      <artifactId>lombok-layer</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <!-- Tells the compiler it will be available in the runtime already - it should be in the layer -->
+      <scope>provided</scope> 
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-core</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-events</artifactId>
+      <version>3.11.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -49,7 +66,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <outputFile>${project.build.directory}/out/java/lib/lambda-layer-1.0-SNAPSHOT.jar</outputFile>
+              <outputFile>${project.build.directory}/out/java/lib/lambda-foundation-layer-1.0-SNAPSHOT.jar</outputFile>
             </configuration>
           </execution>
         </executions>

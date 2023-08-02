@@ -33,16 +33,23 @@ public class JavaCdkStack extends Stack {
                 super(scope, id, props);
 
                 String CDK_DIR = System.getProperty("user.dir");
-                String APPLICATION_DIR = "../lambda-application";
+                Path APPLICATION_DIR = Paths.get(CDK_DIR, "../lambda-application");
 
-                Path layerPath = Paths.get(CDK_DIR, APPLICATION_DIR,
-                                "/lambda-layer/target/out");
-                LayerVersion layer = new LayerVersion(this, "layer", LayerVersionProps.builder()
+                Path layerPath = Paths.get(APPLICATION_DIR.toString(),
+                                "/lambda-foundation-layer/target/out");
+                LayerVersion layer = new LayerVersion(this, "LambdaFoundationLayer", LayerVersionProps.builder()
                                 .code(Code.fromAsset(layerPath.toAbsolutePath().toString()))
                                 .compatibleRuntimes(Arrays.asList(Runtime.JAVA_17))
                                 .build());
 
-                Path functionOnePath = Paths.get(CDK_DIR, APPLICATION_DIR,
+                Path lombokLayerPath = Paths.get(APPLICATION_DIR.toString(),
+                                "/lombok-layer/target/out");
+                LayerVersion lombokLayer = new LayerVersion(this, "LombokLayer", LayerVersionProps.builder()
+                                .code(Code.fromAsset(lombokLayerPath.toAbsolutePath().toString()))
+                                .compatibleRuntimes(Arrays.asList(Runtime.JAVA_17))
+                                .build());
+
+                Path functionOnePath = Paths.get(APPLICATION_DIR.toString(),
                                 "/lambda-1/target/lambda-1-1.0-SNAPSHOT.jar");
                 Function functionOne = new Function(this, "FunctionOne", FunctionProps.builder()
                                 .runtime(Runtime.JAVA_17)
@@ -50,7 +57,7 @@ public class JavaCdkStack extends Stack {
                                 .handler("com.tericcabrel.App")
                                 .memorySize(512)
                                 .timeout(Duration.seconds(30))
-                                .layers(Arrays.asList(layer))
+                                .layers(Arrays.asList(layer, lombokLayer))
                                 .logRetention(RetentionDays.ONE_WEEK)
                                 .architecture(Architecture.ARM_64)
                                 .tracing(Tracing.ACTIVE)

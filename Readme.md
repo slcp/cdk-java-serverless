@@ -51,7 +51,7 @@ This is a maven child module of `lambda-application`
   - `pom.xml` - module specific, unshared dependencies or attribute definitions (e.g. version)
     - Where a dependency is another, local child module the `scope` is set as `provided` to ensure that it does not get packaged into the fat Jar produced by the Maven Shade Plugin.
 
-#### lambda-layer
+#### lambda-foundation-layer
 
 This is a maven child module of `lambda-application`
 

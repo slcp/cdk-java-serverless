@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tericcabrel</groupId>
-  <artifactId>lambda-layer</artifactId>
+  <artifactId>lambda-foundation-layer</artifactId>
   <name>lambda-1</name>
   <version>1.0-SNAPSHOT</version>
   <url>http://www.example.com</url>
@@ -49,4 +49,3 @@
     <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 </project>
-
